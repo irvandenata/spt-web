@@ -1,0 +1,36 @@
+<script src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
+<script src="/template/assets/js/pages/datatables.js"></script>
+<script src="/template/assets/extensions/toastify-js/src/toastify.js"></script>
+<script src="/template/assets/js/pages/toastify.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+	$(".btn-delete").click(function () {
+		Swal.fire({
+			title: "Apakah anda yakin?",
+			text: "Data yang dihapus tidak dapat dikembalikan!",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Ya, hapus!",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				$(this).parent().find("form").submit();
+			}
+		});
+	});
+</script>
+<%if(alert.message != ""){ %>
+<script>
+	Toastify({
+		text: "<%= alert.message %>",
+		duration: 3000,
+		close: true,
+		gravity: "top",
+		position: "center",
+		className: "bg-<%= alert.status %>",
+		backgroundColor: "#40a944",
+	}).showToast();
+</script>
+<%}%>

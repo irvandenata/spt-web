@@ -1,0 +1,89 @@
+<div class="page-heading">
+	<h3><%-title%></h3>
+</div>
+<div class="page-content">
+	<section class="row">
+		<div class="col-12 col-lg-12">
+			<div class="row">
+				<div class="col-12">
+					<div class="card">
+						<div class="card-body">
+							<form
+								class="form form-vertical"
+								action="<%- action %>"
+								method="POST"
+							>
+								<input
+									type="hidden"
+									name="id"
+									value="<% if (typeof user != 'undefined') { %> <%= user._id %> <% } %>"
+								/>
+								<div class="form-body">
+									<div class="row">
+										<div class="col-6 mb-2">
+											<div class="form-group">
+												<label for="first-name-vertical">Nama</label>
+												<input
+													type="text"
+													class="form-control"
+													name="name"
+													value="<% if (typeof user != 'undefined') { %> <%= user.name %> <% } %>"
+													required
+													placeholder="Nama Akun"
+												/>
+											</div>
+										</div>
+										<div class="col-6 mb-2">
+											<div class="form-group">
+												<label for="first-name-vertical">Email</label>
+												<input
+													type="email"
+													class="form-control"
+													name="email"
+													value="<% if (typeof user != 'undefined') { %> <%= user.email %> <% } %>"
+													required
+													placeholder="Email"
+												/>
+											</div>
+										</div>
+										<div class="col-6 mb-2">
+											<div class="form-group">
+												<label for="first-name-vertical">Password</label>
+												<input
+													type="password"
+													class="form-control"
+													name="password"
+													value=""
+													required
+													placeholder="Password"
+												/>
+											</div>
+										</div>
+										<div class="col-6 mb-2">
+											<div class="form-group">
+												<label for="first-name-vertical">Pegawai</label>
+												<input
+													type="text"
+													class="form-control"
+													name="pegawai"
+													value=""
+													required
+													placeholder="Pegawai"
+												/>
+											</div>
+										</div>
+										<div class="col-12 d-flex justify-content-end">
+											<button type="submit" class="btn btn-primary me-1 mb-1">
+												Simpan
+											</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

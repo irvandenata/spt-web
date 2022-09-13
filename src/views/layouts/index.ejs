@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %> - Admin</title>
+
+    <link rel="stylesheet" href="/template/assets/css/main/app.css" />
+    <link rel="stylesheet" href="/template/assets/css/main/app-dark.css" />
+    <link
+      rel="shortcut icon"
+      href="/template/assets/images/logo/favicon.svg"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="/template/assets/images/logo/favicon.png"
+      type="image/png"
+    />
+    <link rel="stylesheet" href="/template/assets/css/shared/iconly.css" />
+    <% if (typeof css != 'undefined') { %> <%-include(css)%> <% } %>
+    <style>
+      .overlayer {
+        background-color: rgb(255, 255, 255);
+        position: absolute;
+        z-index: 9999;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="overlayer">
+      <img
+        src="/template/assets/images/svg-loaders/ball-triangle.svg"
+        class="me-4"
+        style="width: 5rem"
+        alt="audio"
+      />
+    </div>
+    <!-- <div class="load">
+      <img
+        src="/template/assets/images/svg-loaders/ball-triangle.svg"
+        class="me-4"
+        style="width: 5rem"
+        alt="audio"
+      />
+    </div> -->
+    <div id="app">
+      <%- include('../partials/sidebar.ejs')%>
+      <div id="main">
+        <header class="mb-3">
+          <a href="#" class="burger-btn d-block d-xl-none">
+            <i class="bi bi-justify fs-3"></i>
+          </a>
+        </header>
+        <%- include(view)%> <%- include('../partials/footer.ejs')%>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="galleryModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="galleryModalTitle"
+      aria-hidden="true"
+    >
+      <div
+        class="modal-dialog modal-dialog-centered modal-dialog-centered"
+        role="document"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="galleryModalTitle">Preview Gambar</h5>
+            <button
+              type="button"
+              class="close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              <i data-feather="x"></i>
+            </button>
+          </div>
+          <div class="modal-body text-center">
+            <img src="" id="modalImg" width="60%" alt="" />
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/template/assets/extensions/jquery/jquery.min.js"></script>
+
+    <script src="/template/assets/js/bootstrap.js"></script>
+    <script src="/template/assets/js/app.js"></script>
+    <% if (typeof js != 'undefined') { %> <%-include(js)%> <% } %>
+
+    <script>
+      $(".img-thumbnail").on("click", function () {
+        $("#modalImg").attr("src", $(this).attr("src"));
+        $("#galleryModal").modal("show");
+      });
+      $(document).ready(function () {
+        $(".overlayer").fadeOut("slow");
+      });
+      $(".change-page").click(function (e) {
+        $(".overlayer").fadeIn();
+      });
+    </script>
+  </body>
+</html>

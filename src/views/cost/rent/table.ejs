@@ -1,0 +1,36 @@
+<table class="table" id="table1">
+	<thead>
+		<tr>
+			<th width="5%">No.</th>
+			<th>Nama Lokasi</th>
+			<th>Alokasi Dana</th>
+			<th width="15%">Aksi</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% for(let i = 0 ; i < rents.length; i++ ) {%>
+		<tr>
+			<td><%= i+1 %></td>
+			<td><%= rents[i].province?.name??"-" %></td>
+			<td>
+				Rp. <%= parseInt(rents[i].nominal).toFixed(2)
+				.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"); %>
+			</td>
+			<td>
+				<a
+					href="/<%= current%>/<%= rents[i]._id %>/edit"
+					class="btn btn-warning btn-sm"
+					>Edit</a
+				>
+				<form
+					action="/<%= current%>/delete/<%= rents[i]._id %>?_method=DELETE"
+					method="POST"
+				></form>
+				<button class="btn btn-sm btn-danger mt-1 ml-1 btn-delete">
+					Hapus
+				</button>
+			</td>
+		</tr>
+		<%}%>
+	</tbody>
+</table>

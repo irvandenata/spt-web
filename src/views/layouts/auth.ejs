@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - SPT APP</title>
+    <link rel="stylesheet" href="/template/assets/css/main/app.css" />
+    <link rel="stylesheet" href="/template/assets/css/pages/auth.css" />
+
+    <link
+      rel="shortcut icon"
+      href="/template/assets/images/logo/favicon.svg"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="/template/assets/images/logo/favicon.png"
+      type="image/png"
+    />
+    <link
+      rel="stylesheet"
+      href="/template/assets/extensions/toastify-js/src/toastify.css"
+    />
+  </head>
+  <body>
+    <div id="auth">
+      <div class="row h-100 justify-content-center">
+        <div class="col-lg-6 col-12"><%- include(view) %></div>
+      </div>
+    </div>
+    <script src="/template/assets/extensions/jquery/jquery.min.js"></script>
+    <script src="/template/assets/js/bootstrap.js"></script>
+
+    <script src="/template/assets/extensions/toastify-js/src/toastify.js"></script>
+    <script src="/template/assets/js/pages/toastify.js"></script>
+    <%if( typeof alert != 'undefined' && alert.message != ""){ %>
+    <script>
+      Toastify({
+        text: "<%= alert.message %>",
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "center",
+        className: "bg-<%= alert.status %>",
+        backgroundColor: "#40a944",
+      }).showToast();
+    </script>
+    <%}%>
+  </body>
+</html>

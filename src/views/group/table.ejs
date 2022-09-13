@@ -1,0 +1,31 @@
+<table class="table" id="table1">
+	<thead>
+		<tr>
+			<th width="5%">No.</th>
+			<th>Nama Golongan</th>
+			<th width="15%">Aksi</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% for(let i = 0 ; i < groups.length; i++ ) {%>
+		<tr>
+			<td><%= i+1 %></td>
+			<td><%= groups[i].name %></td>
+			<td>
+				<a
+					href="/<%= current%>/<%= groups[i]._id %>/edit"
+					class="btn btn-warning btn-sm"
+					>Edit</a
+				>
+				<form
+					action="/<%= current%>/delete/<%= groups[i]._id %>?_method=DELETE"
+					method="POST"
+				></form>
+				<button class="btn btn-sm btn-danger mt-1 ml-1 btn-delete">
+					Hapus
+				</button>
+			</td>
+		</tr>
+		<%}%>
+	</tbody>
+</table>

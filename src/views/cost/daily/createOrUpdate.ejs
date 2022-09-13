@@ -1,0 +1,62 @@
+<div class="page-heading">
+	<h3><%-type%> <%-title%></h3>
+</div>
+<div class="page-content">
+	<section class="row">
+		<div class="col-12 col-lg-12">
+			<div class="row">
+				<div class="col-12">
+					<div class="card">
+						<div class="card-body">
+							<form
+								class="form form-vertical"
+								action="<%- action %>"
+								method="POST"
+							>
+								<input
+									type="hidden"
+									name="id"
+									value="<% if (typeof daily != 'undefined') { %> <%= daily._id %> <% } %>"
+								/>
+								<div class="form-body">
+									<div class="row">
+										<div class="col-6">
+											<div class="form-group">
+												<label for="first-name-vertical">Lokasi</label>
+												<select name="province" class="select-2 form-control" required>
+                          <option value="">Pilih Provinsi</option>
+                          <% for (let i = 0; i < provinces.length; i++) { %>
+                            <option value="<%= provinces[i]._id %>" <% if (typeof daily != 'undefined') { %> <% if (daily.province.id == provinces[i]._id) { %> selected <% } %> <% } %> ><%= provinces[i].name %></option>
+                          <% } %>
+                        </select>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="form-group">
+												<label for="first-name-vertical">Nominal Uang (Rp)</label>
+												<input
+													type="text"
+													class="form-control nominal"
+													name="nominal"
+                       onkeypress="return onlyNumberKey(event)"
+													value="<% if (typeof daily != 'undefined') { %> <%= daily.nominal %> <% } %>"
+													required
+													placeholder="Masukan Nominal Uang"
+												/>
+											</div>
+										</div>
+										<div class="col-12 d-flex justify-content-end">
+											<button type="submit" class="btn btn-primary me-1 mb-1">
+												Simpan
+											</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
